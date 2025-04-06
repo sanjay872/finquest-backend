@@ -13,7 +13,11 @@ app.use(express.json());
 
 const PORT = process.env.PORT || 3001;;
 
-app.use(cors());
+const cors = require('cors');
+app.use(cors({
+  origin: '*', // or '*' to allow all
+  credentials: true, // if you're sending cookies
+}));
 app.use(express.json());
 app.use('/api/users', userRoutes);
 app.use('/api/ai', aiRoutes);
